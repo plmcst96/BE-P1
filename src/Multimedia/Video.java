@@ -40,5 +40,7 @@ public class Video extends RegistrazioneAudio implements Luminosita, Riproducibi
         return "video";
     }
 
+    //fine classe video
+
 
 }
