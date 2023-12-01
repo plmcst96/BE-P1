@@ -9,8 +9,9 @@ public class Immagine extends ElementoMultimediale implements Luminosita {
         this.lum = lum;
     }
 
-    public void show(){
+    public String show(){
         System.out.println(this.getTitolo() + " - " + this.strLuminosita());
+        return tipoMultimediale();
     }
 
     @Override
