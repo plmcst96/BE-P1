@@ -14,29 +14,21 @@ public class Main {
 
         setMultimedia();
         input.close();
-
-        //---------------> test risultato classi <---------------
-
-      /*  Video video = new Video("elf", 5, 8);
-        System.out.println(video.play());
-
-        RegistrazioneAudio audio = new RegistrazioneAudio("e poi", 6);
-        System.out.println(audio.play());
-
-        Immagine img = new Immagine("me", 8);
-        System.out.println(img.show());*/
-
-
     }
 
     public static void setMultimedia() {
+        // ------> qui creo un ciclo per l'array <-------
+
         for (int i = 0; i < arrMultmedia.length; i++) {
             String selezione;
             String titolo;
-            int durata;
-            int lum;
+            String durata;
+            String lum;
 
             System.out.println("Crea il tuo file multimediale!");
+
+            // ------> qui col do/while ciclo le possibili casistiche in base alla scelta dell'utente <-------
+
             do {
                 System.out.println("Seleziona il tipo di file multimediale");
                 System.out.println("1 - Immagine");
@@ -45,7 +37,16 @@ public class Main {
                 System.out.println("0 - Esci");
                 selezione = input.nextLine();
 
+                //-------> Errore se l'utente non preme i numeri accettati <------
+
+                if (!selezione.matches("[0123]")) {
+                    System.out.println("Errore: Inserire un numero compreso tra 0 e 3.");
+                }
+
             } while (!selezione.matches("[0123]"));
+
+            //------> se l'utente preme 0 esce dal ciclo <------
+
             if (selezione.equals("0")){
                 System.out.println("Fine esecuzione!");
                 break;
@@ -53,32 +54,35 @@ public class Main {
             System.out.println("Scrivi titolo per il tuo file multimediale!");
             titolo = input.nextLine();
 
+            //------> vari condizioni possibili in base alla scelta dell'utente <------
+
             switch (selezione) {
                 case "1": {
                     System.out.println("Scegli la luminosità dell'immagine");
-                    lum = input.nextInt();
-                    arrMultmedia[i] = new Immagine(titolo, lum);
+                    lum = input.nextLine();
+                    arrMultmedia[i] = new Immagine(titolo, Integer.parseInt(lum));
                     ((Immagine) arrMultmedia[i]).show();
                     break;
                 }
                 case "2": {
                     System.out.println("Scegli la durata del tuo file audio");
-                    durata = input.nextInt();
-                    arrMultmedia[i] = new RegistrazioneAudio(titolo, durata);
+                    durata = input.nextLine();
+                    arrMultmedia[i] = new RegistrazioneAudio(titolo, Integer.parseInt(durata));
                     ((RegistrazioneAudio) arrMultmedia[i]).play();
                     break;
                 }
                 case "3": {
                     System.out.println("Scegli la durata del tuo file video");
-                    lum = input.nextInt();
+                    lum = input.nextLine();
                     System.out.println("Scegli la luminosità del tuo file video");
-                    durata = input.nextInt();
-                    arrMultmedia[i] = new Video(titolo, durata, lum);
+                    durata = input.nextLine();
+                    arrMultmedia[i] = new Video(titolo, Integer.parseInt(durata), Integer.parseInt(lum));
                     ((Video) arrMultmedia[i]).play();
                     break;
                 }
                 default:
-                    System.out.println("è stato selezionato un numero diverso da 3");
+                    System.err.println("Errore: Selezione non valida.");
+                    break;
             }
         }
     }
