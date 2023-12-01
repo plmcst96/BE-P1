@@ -16,7 +16,7 @@ public class RegistrazioneAudio extends ElementoMultimediale implements Riproduc
     @Override
     public String play() {
         for (int i = 0; i < this.durata; i++)
-            System.out.println(this.getTitolo() + " - " + this.strVolume());
+            System.out.println(this.getTitolo() + " - " + this.strVolume() + this.volume);
         return this.tipoMultimediale();
     }
 
