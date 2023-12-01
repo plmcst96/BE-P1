@@ -11,5 +11,5 @@ public abstract class  ElementoMultimediale {
         return titolo;
     }
 
-    public abstract String tipoMultimedia();
+    public abstract String tipoMultimediale();
 }
